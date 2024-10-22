@@ -1,13 +1,12 @@
 nextflow.enable.dsl=2
 
-include { DCC } from './modules/local/dcc/main'
 include { INPUT_CHECK       } from './subworkflows/local/input_check.nf'
-include { generateHisat2Index } from './modules/local/hisat2Index/main'
+include { DCC_WORKFLOW     } from './subworkflows/local/DCC_workflow.nf'
 
 
 params.fasta   = params.genome  ? params.genomes[ params.genome ].fasta ?: false : false
 params.gtf     = params.genome  ? params.genomes[ params.genome ].gtf ?: false : false
-params.bowtie = params.genome  ? params.genomes[ params.genome ].bowtie ?: false : false
+params.star    = params.genome && ( params.tool.contains('circexplorer2') || params.tool.contains('dcc') || params.tool.contains('circrna_finder') ) ? params.genomes[ params.genome ].star ?: false : false
 
 ch_fasta       = 'null'
 ch_gtf         = 'null'
@@ -77,15 +76,16 @@ workflow{
     ch_fastq.single.view{"$it"}
 
     //prepare reference. change them into channel
-    botie_index = file(params.bowtie)
     fasta = file(params.fasta)
     gtf = file(params.gtf)
-    //Todo: find a stable way to generate hisat index
-    hisat_index = generateHisat2Index(params.fasta)
 
-    DCC(ch_fastq.single, 
-                fasta, 
-                hisat_index, 
-                botie_index, 
-                gtf)
+    //DCC subflow
+    /*
+    DCC_WORKFLOW(ch_fastq.single,
+                gtf
+                star_index
+                bsj_reads
+                )
+    */
+
 }
