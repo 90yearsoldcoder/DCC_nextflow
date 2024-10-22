@@ -1,1 +1,2 @@
 2024-10-22 02:14:52	-	cheesy_austin	-	2db6276e14e5bf73d1da931766cd217b	4356fd6f-cf5b-448b-a8f9-d43a70681f0f	nextflow run main.nf -dump-channels -profile singularity --input ./example/samplelist.csv --genome GRCh38 --tools dcc
+2024-10-22 02:16:14	3.5s	determined_poisson	ERR	2db6276e14e5bf73d1da931766cd217b	54073d0b-766b-4ba6-a1c4-ddb2a8a82f7f	nextflow run main.nf -dump-channels -profile singularity --input ./example/samplelist.csv --genome GRCh38 --tools dcc

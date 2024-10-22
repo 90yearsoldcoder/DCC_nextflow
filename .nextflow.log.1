@@ -1,0 +1,48 @@
+Oct-22 02:14:51.465 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf -dump-channels -profile singularity --input ./example/samplelist.csv --genome GRCh38 --tools dcc
+Oct-22 02:14:51.520 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 21.10.6
+Oct-22 02:14:51.547 [main] INFO  nextflow.cli.CmdRun - Launching `main.nf` [cheesy_austin] - revision: 2db6276e14
+Oct-22 02:14:51.560 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /restricted/projectnb/casa/mtLin/DCC_nextflow/nextflow.config
+Oct-22 02:14:51.561 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /restricted/projectnb/casa/mtLin/DCC_nextflow/nextflow.config
+Oct-22 02:14:51.580 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `singularity`
+Oct-22 02:14:52.830 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [debug, conda, singularity, docker]
+Oct-22 02:14:52.873 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; plugins-dir=/usr3/graduate/minty/.nextflow/plugins
+Oct-22 02:14:52.875 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Oct-22 02:14:52.885 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Oct-22 02:14:52.886 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Oct-22 02:14:52.889 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Oct-22 02:14:52.899 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Oct-22 02:14:52.949 [main] DEBUG nextflow.Session - Session uuid: 4356fd6f-cf5b-448b-a8f9-d43a70681f0f
+Oct-22 02:14:52.949 [main] DEBUG nextflow.Session - Run name: cheesy_austin
+Oct-22 02:14:52.950 [main] DEBUG nextflow.Session - Executor pool size: 28
+Oct-22 02:14:52.969 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 21.10.6 build 5660
+  Created: 21-12-2021 16:55 UTC (11:55 EDT)
+  System: Linux 4.18.0-553.22.1.el8_10.x86_64
+  Runtime: Groovy 3.0.9 on Java HotSpot(TM) 64-Bit Server VM 1.8.0_411-b09
+  Encoding: UTF-8 (UTF-8)
+  Process: 2352473@scc-q18.scc.bu.edu [192.168.18.202]
+  CPUs: 28 - Mem: 187 GB (40.1 GB) - Swap: 8 GB (8 GB)
+Oct-22 02:14:52.993 [main] DEBUG nextflow.Session - Work-dir: /restricted/projectnb/casa/mtLin/DCC_nextflow/work [nfs]
+Oct-22 02:14:53.006 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Oct-22 02:14:53.015 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Oct-22 02:14:53.055 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 29; maxThreads: 1000
+Oct-22 02:14:53.134 [main] DEBUG nextflow.Session - Session start invoked
+Oct-22 02:14:53.404 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Oct-22 02:14:53.415 [main] DEBUG nextflow.Session - Session aborted -- Cause: Can't find a matching module file for include: ./subworkflows/local/input_check.nf
+Oct-22 02:14:53.424 [main] ERROR nextflow.cli.Launcher - Can't find a matching module file for include: ./subworkflows/local/input_check.nf
+java.nio.file.NoSuchFileException: Can't find a matching module file for include: ./subworkflows/local/input_check.nf
+	at nextflow.script.IncludeDef.realModulePath(IncludeDef.groovy:177)
+	at nextflow.script.IncludeDef.load0(IncludeDef.groovy:112)
+	at nextflow.script.IncludeDef$load0$1.call(Unknown Source)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:47)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:139)
+	at Script_fb941a85.runScript(Script_fb941a85:3)
+	at nextflow.script.BaseScript.runDsl2(BaseScript.groovy:169)
+	at nextflow.script.BaseScript.run(BaseScript.groovy:200)
+	at nextflow.script.ScriptParser.runScript(ScriptParser.groovy:221)
+	at nextflow.script.ScriptRunner.run(ScriptRunner.groovy:212)
+	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:120)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:308)
+	at nextflow.cli.Launcher.run(Launcher.groovy:480)
+	at nextflow.cli.Launcher.main(Launcher.groovy:639)
