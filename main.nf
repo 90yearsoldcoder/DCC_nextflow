@@ -2,6 +2,7 @@ nextflow.enable.dsl=2
 
 include { INPUT_CHECK       } from './subworkflows/local/input_check.nf'
 include { DCC_WORKFLOW     } from './subworkflows/local/DCC_workflow.nf'
+include { STAR_GENOMEGENERATE } from './modules/nf-core/star/genomegenerate/main'
 
 
 params.fasta   = params.genome  ? params.genomes[ params.genome ].fasta ?: false : false
@@ -76,16 +77,24 @@ workflow{
     ch_fastq.single.view{"$it"}
 
     //prepare reference. change them into channel
-    fasta = file(params.fasta)
-    gtf = file(params.gtf)
+    ch_fasta = file(params.fasta)
+    ch_gtf = file(params.gtf)
+
+    //prepare star index
+    ch_star_index = STAR_GENOMEGENERATE(
+        ch_fasta,
+        ch_gtf
+    ).index
+
 
     //DCC subflow
-    /*
+    
     DCC_WORKFLOW(ch_fastq.single,
-                gtf
-                star_index
-                bsj_reads
+                ch_fasta,
+                ch_gtf,
+                ch_star_index,
+                params.bsj_reads
                 )
-    */
+    
 
 }

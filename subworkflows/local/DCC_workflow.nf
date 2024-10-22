@@ -13,11 +13,13 @@ include { DCC_FILTER                       } from '../../modules/local/dcc/filte
 workflow DCC_WORKFLOW {
     take:
     reads
+    fasta
     gtf
     star_index
     bsj_reads
 
     main:
+    ch_versions = Channel.empty()
     
     // DCC WORKFLOW
 
@@ -44,6 +46,6 @@ workflow DCC_WORKFLOW {
     ch_versions = ch_versions.mix(DCC.out.versions)
 
     emit:
-    DCC_FILTER.out.matrix
-    versions
+    DCC_matrix = DCC_FILTER.out.matrix
+    versions = ch_versions
 }
